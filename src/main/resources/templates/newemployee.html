@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+  <title>Nueva mascota</title>
+</head>
+<body>
+<main>
+  <div class="container px-4 py-5">
+    <h1 class="pb-2 mb-3 border-bottom">Nuevo Empleado</h1>
+    <form method="post" th:action="@{'/empleado/save'}" class="mt-2">
+      <input th:value="${employee.emplyee_id}" type="hidden" name="id"/>
+      Por favor elegir nombre.
+      <div class="mb-3">
+
+        <label for="nombre" class="form-label">Nombre</label>
+        <input th:field="${employee.first_name}" type="text" class="form-control" name="nombre" id="nombre"
+               th:classappend="${#fields.hasErrors('employee.first_name')?'is-invalid':''}">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('employee.firstname ')}"
+             th:errors="${employee.firstname}">
+          Por favor elegir un apellido.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="anho" class="form-label">Año</label>
+        <input th:field="${mascota.anho}" type="text" class="form-control" name="anho" id="anho"
+               th:classappend="${#fields.hasErrors('mascota.anho')?'is-invalid':''}">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('mascota.anho')}"
+             th:errors="${mascota.anho}">
+          Por favor elegir email
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="historia" class="form-label">Historia</label>
+        <input th:field="${mascota.historia}" type="text" class="form-control" name="historia" id="historia"
+               th:classappend="${#fields.hasErrors('mascota.historia')?'is-invalid':''}">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('mascota.historia')}"
+             th:errors="${mascota.historia}">
+          Por favor emegir contrasena
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="observaciones" class="form-label">Contrasena</label>
+        <input th:field="${mascota.observaciones}" type="text" class="form-control" name="observaciones" id="observaciones"
+               th:classappend="${#fields.hasErrors('mascota.observaciones')?'is-invalid':''}">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('mascota.observaciones')}"
+             th:errors="${mascota.observaciones}">
+          Por favor elegir puesto
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="sexo" class="form-label">Puesto</label>
+        <select name="sexo" class="form-select" id="sexo">
+          <option th:each="puesto : ${listaPuestos}" th:text="${job.job_title}"
+                  th:value="${employee.job_id}"></option>
+          Por favor elegir suelo
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="observaciones" class="form-label">Sueldo</label>
+        <input th:field="${employee.observaciones}" type="text" class="form-control" name="observaciones" id="observaciones"
+               th:classappend="${#fields.hasErrors('employee.observaciones')?'is-invalid':''}">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('employee.observaciones')}"
+             th:errors="${employee.observaciones}">
+          Por favor elegir Jefe
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="razaEspecieIdraza" class="form-label">Sueldo</label>
+        <select name="razaEspecieIdraza" class="form-select" id="razaEspecieIdraza" >
+          <option th:each="raza : ${listaJefes}" th:text="${employee.employee_id}"
+                  th:value="${employee.manager_id}"></option>
+        </select>
+        Por favor elegir Departamento
+      </div>
+      <div class="mb-3">
+        <label for="razaOtros" class="form-label">Departamento</label>
+        <input th:field="${mascota.razaOtros}" type="text" class="form-control" name="razaOtros" id="razaOtros"
+               th:classappend="${#fields.hasErrors('mascota.razaOtros')?'is-invalid':''}">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('mascota.razaOtros')}"
+             th:errors="${mascota.razaOtros}">
+          Please choose a username.
+        </div>
+      </div>
+      <a th:href="@{'/empleado/listar'}" class="btn btn-success">Cancelar</a>
+      <a th:href="@{'/empleado/guardar'}" class="btn btn-danger">Guardar</a>
+
+    </form>
+  </div>
+</main>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
