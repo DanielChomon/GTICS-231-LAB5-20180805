@@ -7,15 +7,15 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "Shippers")
+@Table(name = "countries")
 public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "countryid")
+    @Column(name = "country_id")
     private Integer countryId;
-    @Column(name = "countryname", nullable = false)
-    private String countryname;
+    @Column(name = "country_name", nullable = false)
+    private String country_name;
     @ManytoOne
     @JoinColumn(name = "RegionID")
     private Region region;

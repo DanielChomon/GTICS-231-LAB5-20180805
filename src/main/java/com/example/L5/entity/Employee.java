@@ -17,28 +17,28 @@ public class Employee {
     @Column(name = "EmployeeID")
     private int id;
     @Column(nullable = false)
-    private String lastName;
+    private String first_name;
     @Column(nullable = false)
-    private String firstName;
-    private String title;
-    private String titleOfCourtesy;
-    private Date birthDate;
+    private String last_name;
+
+    @Column(nullable = false)
+    private String email;
+    private String password;
+    private String phone_number;
+    @Column(nullable = false)
     private Date hireDate;
-    private String address;
-    private String city;
-    private String region;
-    private String postalCode;
-    private String country;
-    private String homePhone;
-    private String extension;
-    @Lob
-    private byte[] photo;
-    @Column(nullable = false)
-    private String notes;
-    @OneToOne
-    @JoinColumn(name = "reportsTo")
-    private Employee manager;
-    private String photoPath;
-    private float salary;
+
+    @ManytoOne
+    @JoinColumn(name = "JobID")
+    private Job job;
+
+    private Float salary;
+    private Float commission_pct;
+
+    @ManytoOne
+    @JoinColumn(name = "ManagerID")
+    private Employee employee;
+
+    private Integer enabled;
 
 }

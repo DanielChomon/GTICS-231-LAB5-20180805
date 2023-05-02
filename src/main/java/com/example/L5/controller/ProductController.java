@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/employee")
 public class ProductController {
 
     final ProductRepository productRepository;

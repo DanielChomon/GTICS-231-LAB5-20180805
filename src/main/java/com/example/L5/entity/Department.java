@@ -15,7 +15,7 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="departmentID")
-    private int id;
+    private int department_id;
     @Column(nullable = false)
     private String department_name;
     @ManyToOne

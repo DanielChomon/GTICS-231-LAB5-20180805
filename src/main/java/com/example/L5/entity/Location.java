@@ -9,16 +9,17 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "Categories")
+@Table(name = "locations")
 public class Location {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name = "CategoryID")
-private int id;
+@Column(name = "locationID")
+private int location_id;
+
 @Column(nullable = false)
-private String categoryname;
-private String description;
-@Lob
-private byte[] picture;
+private String city;
+
+private String state_province;
+
         }

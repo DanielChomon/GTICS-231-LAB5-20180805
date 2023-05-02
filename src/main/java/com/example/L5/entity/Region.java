@@ -7,13 +7,13 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "Suppliers")
+@Table(name = "regions")
 public class Region {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "RegionID")
-    private int id;
+    private int region_id;
     @Column(nullable = false)
     private String region_name;
 
