@@ -1,4 +1,4 @@
-package main.java.com.example.L5.dto;
+package com.example.L5.dto;
 
 public interface EmpleadosPorRegionDto {
     String getRegiondescription();

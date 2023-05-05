@@ -1,4 +1,4 @@
-package main.java.com.example.L5.entity;
+package com.example.L5.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -15,7 +15,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "EmployeeID")
-    private int id;
+    private int employee_id;
     @Column(nullable = false)
     private String first_name;
     @Column(nullable = false)
@@ -28,16 +28,16 @@ public class Employee {
     @Column(nullable = false)
     private Date hireDate;
 
-    @ManytoOne
+    @ManyToOne
     @JoinColumn(name = "JobID")
     private Job job;
 
     private Float salary;
     private Float commission_pct;
 
-    @ManytoOne
-    @JoinColumn(name = "ManagerID")
-    private Employee employee;
+    @OneToOne
+    @JoinColumn(name = "reportsTo")
+    private Employee manager;
 
     private Integer enabled;
 

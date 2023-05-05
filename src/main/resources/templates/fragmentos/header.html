@@ -13,23 +13,17 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <title>Recursos Humanos - TravelTrip</title>
+    <title>Header</title>
 </head>
-<body >
-<div class="container">
 
-    <div th:replace="~{fragmentos/menu.html::menu}"></div>
+<div th:fragment="header" class="row pt-2 pb-2 mb-4 justify-content-center" style="background-color: lightgrey">
 
-    <div class="card text-center mt-5 border-white">
-        <div class="card-body">
-            <h5 class="card-title">Recursos Humanos - TravelTrip</h5>
-            <img class="img-fluid" th:src="@{/images/travel_trip_logo.png}"  height="200" alt="Logo"></div>
+        <div class="row mt-4">
+            <h5 class="card-title">Buscar otras secciones: </h5>
+            <div class="col-3 mt-5">
+                <button th:href="@{'/empleado'}"  type="submit" class="btn btn-info">Empleados</button>
+                <button th:href="@{'/historial'}"  type="submit" class="btn btn-success">Historial</button>
+                <button th:href="@{'/reporte'}"  type="submit" class="btn btn-danger">Reportes</button>
+
+            </div>
         </div>
-    </div>
-
-
-</div>
-<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-</body>
-
-</html>

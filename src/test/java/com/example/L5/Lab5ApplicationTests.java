@@ -1,4 +1,4 @@
-package test.java.com.example.L5;
+package com.example.L5;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
