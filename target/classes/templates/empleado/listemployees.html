@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+          crossorigin="anonymous"></script>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+
+  <title >Lista Empleados</title>
+</head>
+<body>
+<div class="container px-4 py-5">
+  <h1 class="pb-2 border-bottom" style="text-align: center; background-color: white" >Tabla Empleados Totales</h1>
+
+  <div th:if="${msgDanger != null}" th:text="${msgRed}" class="alert alert-danger" role="alert"></div>
+  <div th:if="${msg != null}" th:text="${msgGreen}" class="alert alert-success" role="alert"></div>
+
+  <div class="row">
+    <div class="col">
+    <div class="col-5 mt-5">
+      <a class="btn btn-primary mt-4 mb-4" th:href="@{/empleado/nuevo}">Nuevo Empleado</a>
+      <form method="post" th:action="@{/empleado/buscar}">
+      <input th:value="${textoaBuscar}" type="text" class="form-control me-2 " placeholder="Texto a Buscar" name="textoBuscar"/>
+      </form>
+    </div>
+      <button class="btn btn-success" type="submit">Buscar</button>
+      <a class="btn btn-primary" th:href="@{/empleado}">Limpiar</a>
+    </div>
+  </div>
+
+
+  <table class="table table-striped">
+    <thead style="color: #0095f6">
+    <tr class="table-info">
+      <th style="text-align: center">Nro de Orden</th>
+      <th style="text-align: center">Nombre</th>
+      <th style="text-align: center">Apellido</th>
+      <th style="text-align: center">Puesto</th>
+      <th style="text-align: center">Departamento</th>
+      <th style="text-align: center">Ciudad</th>
+      <th style="text-align: center">Editar</th>
+      <th style="text-align: center">Borrar</th>
+    </tr>
+    </thead>
+    <tbody>
+
+
+    <tr th:each="empleado : ${listaEmpleados}">
+      <td th:text="${info.index + 1}"></td>
+      <td th:text="${empleado.first_name}"></td>
+      <td th:text="${empleado.last_name}"></td>
+      <td th:text="${empleado.jobs.job_title}"></td>
+      <td th:text="${empleado.departments.department_name}"></td>
+      <td th:text="${empleado.departments.locations.city}"></td>
+
+
+      <td><a class="btn btn-primary" th:href="@{'/empleado/editar' + '?id=' + ${empleado.employee_id}}">Editar</a>
+      </td>
+      <td><a class="btn btn-danger" th:href="@{'/empleado/borrar' + '?id=' + ${empleado.employee_id}}">Borrar</a>
+      </td>
+    </tr>
+
+
+    </tbody>
+  </table>
+</div>
+
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
