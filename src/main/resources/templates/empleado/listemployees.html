@@ -15,21 +15,28 @@
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
 
-  <title >Candy&Crash</title>
+  <title >Lista Empleados</title>
 </head>
 <body>
 <div class="container px-4 py-5">
   <h1 class="pb-2 border-bottom" style="text-align: center; background-color: white" >Tabla Empleados Totales</h1>
 
+  <div th:if="${msgDanger != null}" th:text="${msgRed}" class="alert alert-danger" role="alert"></div>
+  <div th:if="${msg != null}" th:text="${msgGreen}" class="alert alert-success" role="alert"></div>
+
   <div class="row">
     <div class="col">
     <div class="col-5 mt-5">
-      <input name="numeroTxID" class="form-control me-2 " type="search" placeholder="Buscar transacciones por TxID" aria-label="Search">
+      <a class="btn btn-primary mt-4 mb-4" th:href="@{/empleado/nuevo}">Nuevo Empleado</a>
+      <form method="post" th:action="@{/empleado/buscar}">
+      <input th:value="${textoaBuscar}" type="text" class="form-control me-2 " placeholder="Texto a Buscar" name="textoBuscar"/>
+      </form>
     </div>
-      <a class="btn btn-primary mt-4 mb-4" th:href="@{'/empleado/new'}">Buscar</a>
-      <a class="btn btn-primary" th:href="@{'/empleado/listar'}">Limpiar</a>
+      <button class="btn btn-success" type="submit">Buscar</button>
+      <a class="btn btn-primary" th:href="@{/empleado}">Limpiar</a>
     </div>
   </div>
+
 
   <table class="table table-striped">
     <thead style="color: #0095f6">
@@ -45,17 +52,24 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="empleado : ${listaEmpleados}">
-      <th th:text="${employee.employee_id}" style="text-align: center; background-color: white">22</th>
-      <th th:text="${employee.first_name}" style="text-align: center; background-color: white" >Javier</th>
-      <th th:text="${employee.last_name}" style="text-align: center; background-color: white">Ibarras</th>
-      <th th:text="${employee.job}" style="text-align: center; background-color: white">Contador</th>
-      <th th:text="${employee.department}" style="text-align: center; background-color: white">Finanzas</th>
-      <th th:text="${employee.city}" style="text-align: center; background-color: white">Lima</th>
-      <td><a class="btn btn-primary" th:href="@{'/empleado/edit' + '?id=' + ${employee.employee_id}}"> Editar</a></td>
-      <td><a class="btn btn-danger" th:href="@{'/empleado/delete' + '?id=' + ${mascota.idmascota}}"> Borrar</a></td>
 
+
+    <tr th:each="empleado : ${listaEmpleados}">
+      <td th:text="${info.index + 1}"></td>
+      <td th:text="${empleado.first_name}"></td>
+      <td th:text="${empleado.last_name}"></td>
+      <td th:text="${empleado.jobs.job_title}"></td>
+      <td th:text="${empleado.departments.department_name}"></td>
+      <td th:text="${empleado.departments.locations.city}"></td>
+
+
+      <td><a class="btn btn-primary" th:href="@{'/empleado/editar' + '?id=' + ${empleado.employee_id}}">Editar</a>
+      </td>
+      <td><a class="btn btn-danger" th:href="@{'/empleado/borrar' + '?id=' + ${empleado.employee_id}}">Borrar</a>
+      </td>
     </tr>
+
+
     </tbody>
   </table>
 </div>
