@@ -1,8 +1,10 @@
-package main.java.com.example.L5.entity;
+package com.example.L5.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Date;
 
 @Entity
 @Getter
@@ -15,18 +17,19 @@ public class JobHistory {
     @Column(name = "jobID")
     private int job_history_id;
 
-    @ManytoOne
+    @ManyToOne
     @JoinColumn(name = "EmployeeID")
     private Employee employee;
 
     private Date start_date;
+
     private Date end_date;
 
-    @ManytoOne
+    @ManyToOne
     @JoinColumn(name = "JobID")
     private Job job;
 
-    @ManytoOne
+    @ManyToOne
     @JoinColumn(name = "DeaprtmentID")
     private Department department;
 

@@ -1,8 +1,9 @@
-package main.java.com.example.L5.entity;
+package com.example.L5.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.mapping.Set;
 
 @Entity
 @Getter
@@ -13,10 +14,10 @@ public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "country_id")
-    private Integer countryId;
+    private Integer country_id;
     @Column(name = "country_name", nullable = false)
     private String country_name;
-    @ManytoOne
+    @ManyToOne
     @JoinColumn(name = "RegionID")
     private Region region;
 

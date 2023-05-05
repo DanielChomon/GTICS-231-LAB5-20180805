@@ -1,4 +1,4 @@
-package main.java.com.example.L5.entity;
+package com.example.L5.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
